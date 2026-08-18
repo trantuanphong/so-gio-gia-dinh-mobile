@@ -20,8 +20,6 @@ Dự án hoàn toàn **MIỄN PHÍ**, **PHI THƯƠNG MẠI** và **KHÔNG CHỨA
 ## 🚀 Hướng dẫn cài đặt & Phát triển
 
 ```bash
-# Di chuyển vào thư mục dự án mobile
-cd so-gio-gia-dinh-mobile
 
 # Lấy các gói phụ thuộc
 flutter pub get

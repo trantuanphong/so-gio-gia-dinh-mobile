@@ -29,12 +29,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd so-gio-gia-dinh-mobile
           flutter pub get
 
       - name: Build Android APK
         run: |
-          cd so-gio-gia-dinh-mobile
           flutter build apk --release --split-per-abi
 
       - name: Upload Android APK Artifacts
@@ -60,12 +58,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd so-gio-gia-dinh-mobile
           flutter pub get
 
       - name: Build iOS (No codesign)
         run: |
-          cd so-gio-gia-dinh-mobile
           flutter build ios --release --no-codesign
 
       - name: Upload iOS Build Payload
