@@ -1,3 +1,4 @@
+// ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import '../models/app_models.dart';
 import '../services/storage_service.dart';
@@ -118,7 +119,7 @@ class _MemorialFormPageState extends State<MemorialFormPage> {
               children: [
                 Expanded(
                   child: DropdownButtonFormField<int>(
-                    initialValue: _lunarDay,
+                    value: _lunarDay,
                     decoration: const InputDecoration(labelText: "Ngày (Âm lịch)", border: OutlineInputBorder()),
                     items: List.generate(30, (i) => i + 1).map((d) => DropdownMenuItem(value: d, child: Text("Ngày $d"))).toList(),
                     onChanged: (val) => setState(() => _lunarDay = val!),
@@ -127,7 +128,7 @@ class _MemorialFormPageState extends State<MemorialFormPage> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: DropdownButtonFormField<int>(
-                    initialValue: _lunarMonth,
+                    value: _lunarMonth,
                     decoration: const InputDecoration(labelText: "Tháng (Âm lịch)", border: OutlineInputBorder()),
                     items: List.generate(12, (i) => i + 1).map((m) => DropdownMenuItem(value: m, child: Text("Tháng $m"))).toList(),
                     onChanged: (val) => setState(() => _lunarMonth = val!),
