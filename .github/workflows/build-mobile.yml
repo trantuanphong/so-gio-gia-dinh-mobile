@@ -1,0 +1,75 @@
+name: Build Mobile Apps (Android & iOS)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android APK & App Bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.x'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: |
+          cd so-gio-gia-dinh-mobile
+          flutter pub get
+
+      - name: Build Android APK
+        run: |
+          cd so-gio-gia-dinh-mobile
+          flutter build apk --release --split-per-abi
+
+      - name: Upload Android APK Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apks
+          path: so-gio-gia-dinh-mobile/build/app/outputs/flutter-apk/*.apk
+
+  build-ios:
+    name: Build iOS App (No-codesign)
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.x'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: |
+          cd so-gio-gia-dinh-mobile
+          flutter pub get
+
+      - name: Build iOS (No codesign)
+        run: |
+          cd so-gio-gia-dinh-mobile
+          flutter build ios --release --no-codesign
+
+      - name: Upload iOS Build Payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build-runner
+          path: so-gio-gia-dinh-mobile/build/ios/iphoneos

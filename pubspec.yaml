@@ -1,0 +1,33 @@
+name: so_gio_gia_dinh_mobile
+description: "So Gio Gia Dinh Mobile App in Flutter"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.10+1
+  shared_preferences: ^2.3.2
+  uuid: ^4.5.1
+  flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
+  mobile_scanner: ^6.0.2
+  qr_flutter: ^4.1.0
+  share_plus: ^10.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/svgs/
+    - assets/images/
