@@ -34,7 +34,7 @@ class AppTheme {
           fontFamily: 'serif',
         ),
       ),
-      cardTheme: CardThemeData(
+      cardTheme: CardTheme(
         color: cardBg,
         elevation: 2,
         shape: RoundedRectangleBorder(

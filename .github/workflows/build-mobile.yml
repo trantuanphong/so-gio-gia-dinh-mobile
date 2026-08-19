@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: android-apks
-          path: so-gio-gia-dinh-mobile/build/app/outputs/flutter-apk/*.apk
+          path: build/app/outputs/flutter-apk/*.apk
 
   build-ios:
     name: Build iOS App (No-codesign)
@@ -68,4 +68,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios-build-runner
-          path: so-gio-gia-dinh-mobile/build/ios/iphoneos
+          path: build/ios/iphoneos
