@@ -38,17 +38,14 @@ android {
             val storeFileParam = project.findProperty("STORE_FILE") as String? ?: System.getenv("STORE_FILE")
             val storePasswordParam = project.findProperty("STORE_PASSWORD") as String? ?: System.getenv("STORE_PASSWORD")
 
-            if (storeFileParam != null && File(storeFileParam).exists()) {
-                keyAlias = keyAliasParam
-                keyPassword = keyPasswordParam
-                storeFile = File(storeFileParam)
-                storePassword = storePasswordParam
-            } else {
-                val debugConfig = signingConfigs.getByName("debug")
-                keyAlias = debugConfig.keyAlias
-                keyPassword = debugConfig.keyPassword
-                storeFile = debugConfig.storeFile
-                storePassword = debugConfig.storePassword
+            if (storeFileParam != null) {
+                val file = if (File(storeFileParam).isAbsolute) File(storeFileParam) else File(project.projectDir, storeFileParam)
+                if (file.exists()) {
+                    keyAlias = keyAliasParam
+                    keyPassword = keyPasswordParam
+                    storeFile = file
+                    storePassword = storePasswordParam
+                }
             }
         }
     }
