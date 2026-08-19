@@ -44,7 +44,11 @@ android {
                 storeFile = File(storeFileParam)
                 storePassword = storePasswordParam
             } else {
-                signingConfig = signingConfigs.getByName("debug")
+                val debugConfig = signingConfigs.getByName("debug")
+                keyAlias = debugConfig.keyAlias
+                keyPassword = debugConfig.keyPassword
+                storeFile = debugConfig.storeFile
+                storePassword = debugConfig.storePassword
             }
         }
     }
