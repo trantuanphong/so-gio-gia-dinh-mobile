@@ -31,15 +31,18 @@ jobs:
         run: |
           flutter pub get
 
-      - name: Build Android APK
+      - name: Build Android App Bundle (AAB) & APK
         run: |
+          flutter build appbundle --release
           flutter build apk --release --split-per-abi
 
-      - name: Upload Android APK Artifacts
+      - name: Upload Android Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: android-apks
-          path: build/app/outputs/flutter-apk/*.apk
+          name: android-release-artifacts
+          path: |
+            build/app/outputs/bundle/release/*.aab
+            build/app/outputs/flutter-apk/*.apk
 
   build-ios:
     name: Build iOS App (No-codesign)
@@ -60,12 +63,14 @@ jobs:
         run: |
           flutter pub get
 
-      - name: Build iOS (No codesign)
+      - name: Build iOS IPA (No codesign)
         run: |
-          flutter build ios --release --no-codesign
+          flutter build ipa --release --no-codesign
 
-      - name: Upload iOS Build Payload
+      - name: Upload iOS IPA Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ios-build-runner
-          path: build/ios/iphoneos
+          name: ios-release-artifacts
+          path: |
+            build/ios/archive/*.xcarchive
+            build/ios/ipa/*.ipa
