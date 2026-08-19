@@ -75,14 +75,17 @@ jobs:
         run: |
           flutter pub get
 
-      - name: Build iOS IPA (No codesign)
+      - name: Build iOS App & Package Payload
         run: |
-          flutter build ipa --release --no-codesign
+          flutter build ios --release --no-codesign
+          mkdir -p build/ios/ipa/Payload
+          cp -r build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          cd build/ios/ipa && zip -r Runner-unsigned.ipa Payload
 
-      - name: Upload iOS IPA Artifacts
+      - name: Upload iOS Release Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ios-release-artifacts
           path: |
-            build/ios/archive/*.xcarchive
-            build/ios/ipa/*.ipa
+            build/ios/iphoneos/Runner.app
+            build/ios/ipa/Runner-unsigned.ipa
