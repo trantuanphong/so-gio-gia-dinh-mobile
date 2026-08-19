@@ -8,7 +8,7 @@
 PRODUCT_NAME = so_gio_gia_dinh_mobile
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.sogiagiadinh.soGioGiaDinhMobile
+PRODUCT_BUNDLE_IDENTIFIER = phongtt.sogiagiadinh
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2026 com.sogiagiadinh. All rights reserved.
